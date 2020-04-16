@@ -36,7 +36,7 @@ Bittorrent(以下简称BT)作为一种曾经极为流行的文件传输协议, �
 
 在既有的开源项目中, 国人作者taobataoma开发的meanTorrent[注]是使用Javascript编写, 以mean(MongoDB文档式数据库, Express MVC框架, Angular.js 前端框架, Node.js后端运行时(Runtime))这一相对较多人使用的开发框架组合进行开发。笔者也曾经为其贡献过代码[注], 然而时过境迁, 现在其开发已经陷入沉寂。而且以Node.js开发的网页应用后端系统不可避免地会遇到Javascript这一纯脚本型语言带来的性能问题。
 
-选型过程中相中的另一个开源项目是目前正在活跃开发的UNIT3D-Community-Edition, 由美国开发者HDVinnie发起。该项目使用PHP编写, 以成熟的Laravel框架为基础开发, 前端框架可以使用时下正红的React或者Vue, 具有良好的用户界面(User Interface, 以下简称UI)
+选型过程中相中的另一个开源项目是目前正在活跃开发的UNIT3D-Community-Edition[注], 由美国开发者HDVinnie发起。该项目使用PHP编写, 以成熟的Laravel框架为基础开发, 前端框架可以使用时下正红的React或者Vue, 具有良好的用户界面(User Interface, 以下简称UI), 并且前后端解耦, 代码组织结构清晰, 变量方法名命名规范, 能够自我解释, 
 
 
 
