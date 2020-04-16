@@ -1,0 +1,20 @@
+一个基于Bittorrent协议的资源发布分享平台的实现、改进及运营
+
+
+摘要
+
+本文针对现如今因为学校扩招、学生人数扩增等原因导致的校园网出口带宽紧张问题, 提出了一种成熟稳定的资源分享方案, 该方案具有可持续、分布式、容错性强等优点, 同时基于既有稳定的传输协议以及丰富多样的软件生态, 能够为学校师生提供较好的资源分享平台。
+
+在本文中, 笔者首先分析了当前校园网出口带宽被耗尽的现状, 并结合因全国大范围部署IPv6协议导致的骨干网间互联带宽吃紧的问题而导致的学校教育网出口IPv4/IPv6双栈所均有的不同程度超售现象, 加之对校内学生的网络行为习惯分析, 提出了一种比较符合实际需求的基于Bittorrent协议的分布式资源分享方案。在实现完该方案后的实际运营过程中, 针对所遇到的问题对系统做出进一步的分析与改进, 增添相应功能, 最后完善上线。
+
+本文所实现的资源分享方案使用了Bittorrent协议这一开源且广泛流行的互联网标准, 相比于传统FTP、HTTP文件服务等单点C/S, B/S式系统, 具有分布式以及容错性极高的优点。同时, 较独自开发全新的协议开发成本更低, 不容易犯下开发方向上的错误。但该系统仍有不足之处, 如需要用户适应相对老旧的客户端软件; 其次, 为了更好地利用该系统, 需要用户对Bittorrent协议要有一定程度的理解等。
+
+【关键词】：资源分享平台, Bittorrent协议, 分布式, 高容错
+
+Abstract
+
+As the outcoming bandwidth of the school is becoming critical during the increasement of number of student and expanding enrollment, a universal resource sharing platform is the extremely urgent at the present time for our school. This article proposes a mature and stable resource sharing solution to the problem mentioned above. The solution benefits the advantages of sustainability, distribution, and fault tolerance. Based on the existing stable transmission protocol and rich and diverse software ecology, it can provide a better resource sharing platform for school teachers and students.
+
+In this article, the author first analyzes the status quo of the campus network bandwidth being exhausted, combined with the problem of tight bandwidth between the backbone networks caused by the nationwide deployment of the IPv6 protocol, the the ** overselling ** phenomena of CERNET outlet of the campus network in both IPv4 / IPv6 stack, and the analysis of the Internet using behavior of the school students, then puts forward a distributed resource sharing proposal based on the Bittorrent protocol, which is more in line with the actual needs. In the actual operation after the implementation of this platform, the whole system was further analyzed and improved according to the problems encountered. Corresponding functions were added, and finally the platform was improved.
+
+The resource sharing platform implemented in this article uses the Bittorrent protocol, an open source and widely popular Internet standard. Compared with traditional FTP, HTTP file services which are single-point-based C/S, B/S systems, this platform benefits from its distributed and high fault-tolerant advantages. Meanwhile, it is of less effort to make use of a existing mature protocal than ti develop a new one, which reducing the possibility to make mistakes in the general direction of development. However, the platform still has deficiencies, such as requiring users to adapt to relatively old client software; secondly, in order to make better use of the platform, users need to have a certain degree of understanding of the Bittorrent protocol.
