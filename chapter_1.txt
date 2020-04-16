@@ -38,11 +38,22 @@ Bittorrent(以下简称BT)作为一种曾经极为流行的文件传输协议, �
 
 在既有的开源项目中, 国人作者taobataoma开发的meanTorrent[注: https://github.com/taobataoma/meanTorrent]是使用Javascript编写, 以mean(MongoDB[注] 文档式数据库, Express[注] MVC框架, Angular.js[注] 前端框架, Node.js[注] 后端运行时(Runtime))这一相对较多人使用的开发框架组合进行开发。笔者也曾经为其贡献过代码[注], 然而时过境迁, 现在其开发已经陷入沉寂。而且以Node.js开发的网页应用后端系统不可避免地会遇到Javascript这一纯脚本型语言带来的性能问题。
 
-选型过程中相中的另一个开源项目是目前正在活跃开发的UNIT3D-Community-Edition[注: https://github.com/HDInnovations/UNIT3D-Community-Edition], 由美国开发者HDVinnie发起。该项目使用PHP编写, 以成熟的Laravel框架为基础开发, 前端框架可以使用时下正红的React[注]或者Vue[注], 具有良好的用户界面(User Interface, 以下简称UI), 并且前后端解耦, 代码组织结构清晰, 变量方法名命名规范, 能够自我解释, 进行二次开发的难度最小, 同时Demo网站[注: https://unit3d.site/]已经具有不错的用户体验, 因此笔者最终选择使用UNIT3D-Community-Edition进行二次开发。
+选型过程中相中的另一个开源项目是目前正在活跃开发的UNIT3D-Community-Edition[注: https://github.com/HDInnovations/UNIT3D-Community-Edition], 由美国开发者HDVinnie发起。该项目使用PHP编写, 以成熟的Laravel框架为基础开发, 前端框架可以使用时下正红的React[注]或者Vue[注], 具有良好的用户界面(User Interface, 以下简称UI), 并且前后端解耦, 代码组织结构清晰, 变量方法名命名规范, 能够自我解释, 进行二次开发的难度最小, 同时Demo网站[注: https://unit3d.site/]已经具有不错的用户体验, 因此笔者最终选择使用UNIT3D-Community-Edition(以下简称UNIT3D)进行二次开发。
 
 
+1.3 本文的工作
 
+通过将既有的UNIT3D Demo网站投入试运营, 收集内测人员的意见反馈, 针对性地根据校园网使用场景进行功能增删调整等的二次开发。增删调整的功能中, 包括但不限于:
 
+1. 从前述NexusPHP内测系统的数据迁移
+
+2. 数据库表字段的调整
+
+3. 标签系统的调整优化
+
+4. 投票桩功能的系统实现
+
+5. 反作弊用的IP地址记录功能
 
 
 
