@@ -28,7 +28,7 @@ Bittorrent(以下简称BT)作为一种曾经极为流行的文件传输协议, �
 
 NexusPHP基于TBSource[注: https://sourceforge.net/projects/tbsource/]开发, 在后者的基础上添加或完善了大量功能，同时极大地提高了代码效率(除TBSource外，还吸取了一些其它private tracker的想法或代码，如Bit-HDTV，What.cd和SceneTorrents)[注, 直接抄自NeuxsPHP简介]。NexusPHP最后一个公开版本发布于2012年7月7日, 版本号为Standard v1.5 Beta 5[注: https://sourceforge.net/projects/nexusphp/files/], 包括北邮人BYRBT在内的国内不少NexusPHP PT网站都是基于这个版本二次开发的。
 
-另一方面, 以六维空间为代表的一类PT网站使用成熟的开源论坛系统Discuz!为基础, 利用既有的用户管理功能和附件功能, 在这之上加入流量统计等功能, 使之成为符合PT要求的网站。
+另一方面, 以六维空间为代表的一类PT网站以成熟的开源论坛系统Discuz!为基础, 利用既有的用户管理功能和附件功能, 在这之上加入流量统计等功能, 使之成为符合PT要求的网站。
 
 然而上述的两个系统都有自己的问题。首先是早期NexusPHP开发的时候, PHP语言的开发范式尚未形成, 许多现代语言的特性, 如包管理、前端解耦、自动构建等系统都没有十分可靠的方案, 成熟的MVC(Model, View, Controller)框架也未问世, 导致NexusPHP几乎就是在TBSource的基础上继续"裸"写网页。读者不妨想象一下从一无所有的"hello world"程序开始写起到写成DOS系统的过程, 虽然有一定的夸张成分, 但要用早期的PHP标准编写这样网页应用绝非易事, 而在这基础上的二次开发更是难上加难。
 
