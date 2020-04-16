@@ -26,6 +26,8 @@ Bittorrent(下记BT)作为一种曾经极为流行的文件传输协议, 即使�
 
 为了能够尽快、可靠地实现前述构想, 笔者及同好必须要在既有的系统中进行选型, 进而二次开发, 尽快上线部署, 赶在新生入学等关键的时间节点进行推广, 进而达到校园网资源最大化的目标。
 
+1.2中提到的NexusPHP和Discuz!是目前比较成熟的PT网站使用的系统, 两者都用PHP语言写就。其中NexusPHP基于TBSource开发, 在后者的基础上添加或完善了大量功能，同时极大地提高了代码效率(除TBSource外，还吸取了一些其它private tracker的想法或代码，如Bit-HDTV，What.cd和SceneTorrents)[注, 直接抄自NeuxsPHP简介]。NexusPHP最后一个公开版本发布于2012年7月7日, 版本号为Standard v1.5 Beta 5, 包括北邮人BYRBT在内的国内不少NexusPHP PT网站都是基于这个版本二次开发的。
+
 
 
 
