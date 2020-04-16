@@ -1,0 +1,16 @@
+第二章 架设PT网站所需要的技术综述
+
+
+2.1 Bittorrent协议
+
+
+2.2 适用于BT协议的Tracker服务器及Private Tracker
+
+
+2.3 BT客户端软件
+
+
+2.4 Laravel MVC框架
+
+
+2.5 UNIT3D-Community-Edition
