@@ -58,7 +58,7 @@ NexusPHP基于TBSource[注: https://sourceforge.net/projects/tbsource/]开发, �
 
 1.4 论文结构简介
 
-本文第一章首要介绍了中山大学校园网, 尤其是东校区校园网出口带宽紧张的现状, 进而提出构建运营一个校园内部分布式资源分享平台的构想, 列举比较了当前被国内大学广泛使用的基于分布式BT协议的PT网站及其所用的系统软件, 即NexusPHP与Discuz!, 并对比了另外两种开源项目meanTorrent及UNIT3D, 经过权衡取舍, 最终将二次开发的原型选型定为UNIT3D。
+本文第一章首先简要介绍了中山大学校园网, 尤其是东校区校园网出口带宽紧张的现状, 进而提出构建运营一个校园内部分布式资源分享平台的构想, 列举比较了当前被国内大学广泛使用的基于分布式BT协议的PT网站及其所用的系统软件, 即NexusPHP与Discuz!, 并对比了另外两种开源项目meanTorrent及UNIT3D, 经过权衡取舍, 最终将二次开发的原型选型定为UNIT3D。
 
 第二章将主要介绍为了进行二次开发而需要的相关技术, 包括Bittorrent协议, Tracker服务器软件要求, Private Tracker的要求, BT客户端软件, 使用PHP编写的Laravel MVC框架, 以及将要基于其二次开发的使用Laravel框架编写的UNIT3D项目。
 
