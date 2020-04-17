@@ -31,15 +31,19 @@ Laravel框架具有较好的国际化兼容性, 通过在资源文件中定义�
 
 迁移脚本实际上就是将原表的字段一一对应到新表的字段中, 然后通过SQL语句逐条地重新录入。
 
-[图 旧表 vs 新表, 截取PHPSTORM中TJUPT_TO_UNIT3D中的Mapping.php]
-
-前置步骤是将新表建立起来。这里用到了Laravel自带的`Illuminate\Database\Schema\Blueprint`类提供Migration基类。实际上, 所有数据库迁移操作基本都离不开对这个类类方法的使用。
+前置步骤是将新表建立起来。这里用到了Laravel自带的`Illuminate\Database\Schema\Blueprint`类提供Migration子类。实际上, 所有数据库迁移操作基本都离不开对这个类类方法的使用。下图所示是给UNIT3D表结构中新增副标题(Subhead)字段的迁移脚本。
 
 [图 新表中新增subhead的脚本, 截图/database/migrations/2020_02_10_122859_add_subhead_to_torrents_table.php]
 
 在这里, Blueprint类会将相应的Migration类方法, 比如`$table->string('subhead')`, 转化为SQL语句`alter table $table add subhead`, 从而达到增加字段的目的。
 
-同时, Migration基类中定义了回溯的`down()`函数, 方便进行数据库迁移失败后的反向迁移。
+同时, Migration子类中定义了回溯的`down()`函数, 方便进行数据库迁移失败后的反向迁移。
+
+具体的从NexusPHP迁移到UNIT3D的脚本, 包含了一个创建新表的脚本, 用到上述的Blueprint类的子类方法, 按照目标的表结构创建数据表。还包含了一个描述新旧数据表各字段映射关系的`Mapping.php`文件, 里面的代码负责将旧表中的每一行数据解析, 转换成新表对应的字段的`INSERT`SQL语句, 然后执行, 从而达到迁移的目的。
+
+[图 旧表 vs 新表, 截取PHPSTORM中TJUPT_TO_UNIT3D中的Mapping.php]
+
+
 
 
 4.4 功能删改 - 
