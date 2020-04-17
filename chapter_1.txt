@@ -45,6 +45,8 @@ NexusPHP基于TBSource[注: https://sourceforge.net/projects/tbsource/]开发, �
 
 通过将既有的UNIT3D Demo网站投入试运营, 收集内测人员的意见反馈, 针对性地根据校园网使用场景进行功能增删调整等的二次开发。增删调整的功能中, 包括但不限于:
 
+0. 完善UI的中文语言本地化(Localization)工作
+
 1. 从前述NexusPHP内测系统的数据迁移
 
 2. 数据库表字段的调整
