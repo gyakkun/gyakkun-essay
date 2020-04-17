@@ -47,9 +47,9 @@ NexusPHP基于TBSource[注: https://sourceforge.net/projects/tbsource/]开发, �
 
 1. 完善UI的中文语言本地化(Localization)工作
 
-2. 从前述NexusPHP内测系统的数据迁移
+2. 数据库表字段的调整
 
-3. 数据库表字段的调整
+3. 从前述NexusPHP内测系统的数据迁移
 
 4. 标签系统的调整优化
 
