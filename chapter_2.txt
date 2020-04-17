@@ -24,7 +24,7 @@ Bencode编码将要编码的内容通过简单的字母对括起来, 或者是�
 
 事实上, 一个PT平台本身也必须实现一个Tracker。Tracker负责记录每一个正在上传/下载相应种子文件所代表的资源的对等方(以下记作Peer)的BT客户端的IP地址和端口。也就是说, 一个Tracker必须维护这样一个表, 主键是种子文件的特征值, 字段包括该正在上传/下载该主键所代表的种子文件的Peer信息, 也即前述的地址和端口。在具体的实现中, 上面提到的这个特征值实际上会用前述info字典整体的[多少位?]XX位SHA-1哈希值来表示, 这也是著名的衍生于BT协议的magnet磁力链地址的核心所在, 因与本文不直接相关, 此处按下不表。
 
-BT客户端和Tracker发起通信(以下记作announce), BT客户端将自己正在上传/下载的种子的特征值、BT客户端在两次announce之间对该种子的上传/下载量等信息通过HTTP GET请求参数的方式向Tracker传送
+BT客户端和Tracker发起通信(以下记作announce), BT客户端将自己正在上传/下载的种子的特征值(peer_id)、BT客户端在两次announce之间对该种子的上传/下载量(uploaded/downloaded)等信息通过HTTP GET请求参数的方式向Tracker传送。Tracker则通过Bencode编码的方式, 将BT客户端所需要的peer_id对应的对等方列表(peers), 对peers是一个List, 每个项里面又用Dictionary的形式记录着peer_id(种子特征值), ip(对等方的IP 地址)以及port(对等方BT客户端监听的端口号)。有了这些信息, 一方BT客户端就可以向对等方BT客户端发起通信。
 
 
 2.3 BT客户端软件
