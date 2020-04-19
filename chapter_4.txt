@@ -6,29 +6,29 @@
 
 开发环境使用的是捷克Jetbrain公司的PhpStorm IDE(Integrated Development Environment, 集成开发环境)。它拥有完善的词头联想及代码补全功能, 能够极大地提高开发效率。
 
-[图 PHPSTORM开发环境]
+[图 (4.1-phpstorm-ide) PHPSTORM开发环境]
 
 UNIT3D作者提供了一份手动部署的手册, 以及一个自动部署脚本, 但与当前各依赖包的最新版本有所脱节。为此, 笔者使用了同好提供的Dockerfile[注 注明作者是白白], 在每一次代码的修改、提交、推送之后, 交由代码托管方github[注]的自动工作流系统进行Docker[注]镜像的构建与发布。若构建失败笔者将会收到邮件通知, 从而分载(Offload)了部分本应人工完成的编译时(Compile-time)测试工作。
 
-[图 GITHUB 工作流 流程图]
+[图 (4.1-github-workflow) GITHUB 工作流 流程图]
 
 除此之外, 笔者还使用了TravisCI[注]进行部分用例测试, StyleCI来检查代码格式规范。两者都是各自领域优秀的持续集成(Continuos Integration, CI)测试工具, 基本上承担了大部分代码级别的测试工作。具体的功能测试将在4.5中的试运营部分给出描述。
 
-[图 TravisCI StyleCI]
+[图 (4.1-style-ci, 4.1-travis-ci) TravisCI StyleCI]
 
 具体的本地测试环境是在VMWare虚拟机上, 通过PhpStorm的Deploy(部署)功能以及虚拟机的SSH(Secure shell, 安全外壳协议)服务, 能够将代码实时地从本地开发环境同步到虚拟机的测试环境中。然后在本地开发环境的浏览器中就能实时预览到开发中的网页。
 
-[图 虚拟机 和 调试阶段的页面 截图重点给到IDE HELPER 和网页下面的Dev Toolbar]
+[图 (4.1-vwmare-unit3d-dev, 4.1-web-idehelper-chrome-devtool) 虚拟机 和 调试阶段的页面 截图重点给到IDE HELPER 和网页下面的Dev Toolbar]
 
 4.2 本地化工作
 
 Laravel框架具有较好的国际化兼容性, 通过在资源文件中定义相应英文单词的特定语言翻译, 然后在视图模板文件中使用`@lang('app.langItem')`这种注记将原始内容表示出来, 就可以简单地通过前端的语言切换选项切换所渲染的不同语言界面。
 
-[图 一份git diff式的源码前后对比, 突出从原始英语单词到`@lang('app.langItem')`的部分]
+[图 (4.2-git-diff) 一份git diff式的源码前后对比, 突出从原始英语单词到`@lang('app.langItem')`的部分]
 
 针对英语转中文的翻译部分, 由于笔者曾经修过实用口译这门课程, 对快速高效的翻译颇有心得。经过一番重新翻译、修改、润色, 最终得到了令人满意的中文用户界面。
 
-[图 对比前后用户界面的语言部分]
+[图 (4.2-before-localization-cut, 4.2-after-localization-cut) 对比前后用户界面的语言部分]
 
 
 4.3 数据表迁移工作
@@ -37,7 +37,7 @@ Laravel框架具有较好的国际化兼容性, 通过在资源文件中定义�
 
 前置步骤是将新表建立起来。这里用到了Laravel自带的`Illuminate\Database\Schema\Blueprint`类提供Migration子类。实际上, 所有数据库迁移操作基本都离不开对这个类类方法的使用。下图所示是给UNIT3D表结构中新增副标题(Subhead)字段的迁移脚本。
 
-[图 新表中新增subhead的脚本, 截图/database/migrations/2020_02_10_122859_add_subhead_to_torrents_table.php]
+[图 (4.3-subhead-migration-script) 新表中新增subhead的脚本, 截图/database/migrations/2020_02_10_122859_add_subhead_to_torrents_table.php]
 
 在这里, Blueprint类会将相应的Migration类方法, 比如`$table->string('subhead')`, 转化为SQL语句`alter table $table add subhead`, 从而达到增加字段的目的。
 
@@ -45,7 +45,7 @@ Laravel框架具有较好的国际化兼容性, 通过在资源文件中定义�
 
 具体的从NexusPHP迁移到UNIT3D的脚本, 包含了一个创建新表的脚本, 用到上述Blueprint类的子类方法, 按照目标的表结构创建数据表。还包含了一个描述新旧数据表各字段映射关系的`Mapping.php`文件, 里面的代码负责将旧表中的每一行数据解析, 转换成新表对应字段的`INSERT`SQL语句, 然后执行, 从而达到旧表迁移到新表的目的。
 
-[图 旧表 vs 新表, 截取PHPSTORM中TJUPT_TO_UNIT3D中的Mapping.php]
+[图 (4.3-tjupt-to-unit3d-script-mapping) 旧表 vs 新表, 截取PHPSTORM中TJUPT_TO_UNIT3D中的Mapping.php]
 
 
 4.4 功能删改 - 标签功能调整
@@ -54,7 +54,7 @@ Laravel框架具有较好的国际化兼容性, 通过在资源文件中定义�
 
 找到问题的原因之后, 笔者先尝试剔除诸如上述"电影"资源分类中`IMDB ID`字段的必要输入开关。其后, 因为在4.3所描述的数据表迁移中, 为新表增加了很多其他资源类型项, 因此, 只要将自带的电影等分类从数据库中删除, 将新的分类设置成默认分类, 即可绕过上述标签的联网获取机制, 变相达到剔除标签功能的目的。
 
-[图 UNIT3D 资源类别 元信息 必要字段开关 设置页]
+[图 (4.4-remove-requirement-for-tag-system) UNIT3D 资源类别 元信息 必要字段开关 设置页]
 
 
 4.5 功能增添 - 投票功能的实现

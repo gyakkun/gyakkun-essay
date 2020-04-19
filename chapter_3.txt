@@ -4,7 +4,7 @@
 
 如2.4中所述, UNIT3D按照标准的Laravel项目组织文件。根据开发需要, 笔者需要增删修改的主要有`/app/Http/Controllers/, /app/Http/Controllers/API/, /app/Models/, /database/migrations/, /resources/views/, /resources/lang/`, 分别对应投票、增添新字段所应修改的控制器部分, 数据结构模型部分, 数据库表迁移部分, 资源的视图部分, 以及本地化的语言词汇对照部分。
 
-[图 PhpStorm中的目录结构, 突出显示上面提到的部分]
+[图 (3.1-phpstorm-folder-structure-1/2/3/4/5/6) PhpStorm中的目录结构, 突出显示上面提到的部分]
 
 
 3.2 功能增删与调整
