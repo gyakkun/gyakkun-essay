@@ -73,25 +73,23 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
 
 在修改投票的过程中, 管理员可能增加/删除/修改既有的选项名称。为此, 需要从前端请求中获取相应的选项ID, 然后比对数据表中相应ID的既有选项名称是否和前端返回的选项名称一致, 若不一致, 则将其加入临时待增加/修改/删除选项数组中, 在之后的循环中逐一从数据库中增加/修改/删除。
 
-[图 update流程图]
+[图 (4.5.1-pollcontroller-update-flowchart) update流程图]
 
 这里用到了不少前端的技巧。为了使前端的修改请求能够带上原始选项的ID, 笔者在控制器返回给前端的修改投票页面里的具体各个投票的区块中, 增加了非显示字段`poll-id`以及`option-id`, 顾名思义, 就是数据表中对应投票/选项的唯一ID。在前端将要提交的表单中, 这两项会一并提交, 从而在后端的控制器中能取到相应的ID, 继而进入上述`update($id)`函数的流程中。
 
-[图 resources\views\Staff\poll\forms\update.blade.php 中 style="visibility: hidden"的部分]
+[图 (4.5.1-visibility-hidden) resources\views\Staff\poll\forms\update.blade.php 中 style="visibility: hidden"的部分]
 
 删除的逻辑类似, 从前端取得待删除的投票ID后, 交由Laravel的模型模块, 自动注入相关类方法, 继而从数据表中实际删除对应的投票。
-
-[图 destroy流程图]
 
 4.5.2 投票的重复IP校验
 
 重复IP校验的逻辑并不复杂, 只要将每次投票的HTTP请求中的源IP提取出来, 再与voter数据表中相应poll_id外键对应的所有票的ip字段进行比对, 若发现一致的, 则判定为重复IP。
 
-[图 判定重复IP流程图 app\Http\Controllers\PollController.php  validateVoter()函数]
+[图 (4.5.2-validate-voter-flowchart) 判定重复IP流程图 app\Http\Controllers\PollController.php  validateVoter()函数]
 
 具体的实现中, 使用了或非运算符简化运算, 但语义不太明晰。
 
-[图  直接糊代码 app\Http\Controllers\PollController.php  validateVoter()函数]
+[图  (4.5.2-validate-voter-code) 直接糊代码 app\Http\Controllers\PollController.php  validateVoter()函数]
 
 
 4.6 功能增添 - 初步添加鉴权操作日志记录功能
@@ -102,20 +100,20 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
 
 因为主要记录的是鉴权操作, 而HTTP服务器软件, 比如nginx[注], 都有独自完善的日志功能, 所以本平台的鉴权日志只需记录用户相关的信息, 以及根据用户所用的设备等具有辨识性质信息哈希得到的一个识别码。为此, 定义Authentication类, 记录'user_id', 'device_id','ip_address'三个字段, 分别对应PHP的integer, integer和string原生类型。为了记录鉴权的状态, 定义三种字符串常量, 'LOGIN', 'FAILED', 'LOCKOUT', 分别表示登录(即鉴权成功), 失败(表示当此鉴权操作失败, 如密码错误), 以及锁定(账户多次鉴权操作失败, 账户被上锁, 待解封) 之后的持久化步骤交给Laravel的持久化模块。
 
-[图 models/authentication.php 可以用UML画E-R图]
+[图 (4.6.1-authentication-model-png) models/authentication.php 可以用UML画E-R图]
 
 
 4.6.2 数据库迁移脚本
 
 为了记录前述的数据模型, 要在数据库中定义新的数据表。这里用到前述的数据库迁移脚本。只需要将新字段的名称和SQL数据类型通过Blueprint类的相应子类类方法告知数据库即可。
 
-[图 \database\migrations\2020_03_03_173122_create_authentications_table.php]
+[图 (4.6.1-migration-script) \database\migrations\2020_03_03_173122_create_authentications_table.php]
 
-4.6.3 具体的日志记录逻辑(桩功能)
+4.6.3 具体的日志记录逻辑
 
 为了实现日志记录, 需要为每一次鉴权操作注册监听事件。为此需要在Laravel框架中的事件监听服务中注册鉴权操作的事件订阅者(AuthEventSubscriber), 流程图如下。
 
-[图 摘要Laravel的事件监听机制]
+[图 (4.6.3-event-model) 摘要Laravel的事件监听机制]
 
 
 4.7 网站的上线部署
