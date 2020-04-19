@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>410</x>
+      <y>240</y>
+      <w>210</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Model&gt;&gt;
+namespace App\Models;
+--
+# Status
+- LOGIN
+- FAILED
+- LOCKOUT
+--
+- userId: integer
+- deviceId: integer
+- ip_address: string
+--
+- user(): User
+- device(): Device</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
