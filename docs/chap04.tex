@@ -15,7 +15,7 @@
     \label{fig:phpstormide}
 \end{figure}
 
-UNIT3D作者提供了一份手动部署的手册, 以及一个自动部署脚本, 但与当前各依赖包的最新版本有所脱节。为此, 笔者使用了站长howardlau同学提供的Dockerfile, 在每一次代码的修改、提交、推送之后, 交由代码托管方github的自动工作流系统\footnote{\url{https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/github-flow}进行Docker\footnote{https://hub.docker.com/}}镜像的构建与发布。若构建失败笔者将会收到邮件通知, 从而分载(Offload)了部分本应人工完成的编译时(Compile-time)测试工作。
+UNIT3D作者提供了一份手动部署的手册, 以及一个自动部署脚本, 但与当前各依赖包的最新版本有所脱节。为此, 笔者使用了站长howardlau同学提供的Dockerfile, 在每一次代码的修改、提交、推送之后, 交由代码托管方github的自动工作流系统\footnote{\url{https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/github-flow}进行Docker\footnote{https://www.docker.com/}}镜像的构建与发布。若构建失败笔者将会收到邮件通知, 从而分载(Offload)了部分本应人工完成的编译时(Compile-time)测试工作。
 
 \begin{figure}[ht]
     \centering
@@ -246,7 +246,7 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.45\textwidth]{support-files/4.6.1-migration-script.png}
+    \includegraphics[width=0.8\textwidth]{support-files/4.6.1-migration-script.png}
     \caption{针对Authentication表的数据库迁移脚本}
     \label{fig:authmigratescript}
 \end{figure}

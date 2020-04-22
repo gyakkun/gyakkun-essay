@@ -37,3 +37,4 @@ sysuthesis.tar.gz
 node_modules/
 
 /.vscode
+docs/__latexindent_temp.tex
