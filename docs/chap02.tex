@@ -15,7 +15,24 @@ Bencode编码将要编码的内容通过简单的字母对括起来, 或者是�
 
 那么Torrent种子文件的结构也就呼之欲出了。根是一个字典, 下有一个键为``info''的字典节点, info字典的第一个键值对键为``files'', 值为线性表, 线性表中的各个节点又以字典和线性表的形式存放着所分享的不同文件的具体长度。info字典的第二个键值对键为``name''值为所分享的文件文件名, 或是文件夹名。info字典的第三个键值对键为``piece length'', 表示用户指定的分块大小长度, 值是正整数, 通常是2的幂次。紧跟着的info字典的第四个键值对键是``pieces'', 值就是前述的总和哈希值, 以字符串的形式存储。
 
-[图 (2.1-torrent-file-in-bencode-editor, 2.1-torrent-file-in-text-editor) 配上Bencode Editor的图, 以及文本编辑器中打开得到的图]
+\begin{figure}[ht!]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{support-files/2.1-torrent-file-in-bencode-editor.png}
+		\caption{在Bencode Editor中打开}
+		\label{fig:torrent_in_bencode}
+	\end{subfigure}
+	\makebox[0.05\textwidth]{}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{support-files/2.1-torrent-file-in-text-editor.png} 
+		\caption{在文本编辑器中打开}
+		\label{fig:torrent_in_text_editor}
+	\end{subfigure}
+	\caption{torrent文件}
+	\label{fig:torrent}
+\end{figure}
 
 将这样构成的一个种子文件通过互联网分享出去, 得到该文件的人相当于得到了一份完整的文件校验信息。将这个文件交给BT客户端软件进行解析。通常在前述的``info''节点之前还会有一个``announce-list''节点, 记录后文中将要提到的Tracker服务器的地址信息。BT客户端得到Tracker列表后, 和Tracker服务器进行通信, 取得对等方列表(Peer list), 也就是网络上正在上传/下载这份种子文件所描述的资源的BT客户端的IP地址及端口号信息。通信内容也是用Bencode方式进行编码的, 下层协议一般是http或https。得到对等方BT客户端的IP地址及端口号后, BT客户端之间就可以发起进一步的通信, 进行实际的文件内容传输。其中囊括拥塞控制等算法在内的具体传输协议既可以使用原始BT协议中定义的一套基于TCP的协议, 也可以替换成BEP-0029\cite{arvidnorberg2009bep0029}(BitTorrent Enhancement Proposals No.29)中提出的基于UDP的μTP协议, 具体算法步骤参见附录中的链接, 在此不再赘述。
 
