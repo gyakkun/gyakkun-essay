@@ -10,15 +10,15 @@
 
 [图 (4.1-phpstorm-ide) PHPSTORM开发环境]
 
-UNIT3D作者提供了一份手动部署的手册, 以及一个自动部署脚本, 但与当前各依赖包的最新版本有所脱节。为此, 笔者使用了同好提供的Dockerfile[注 注明作者是白白], 在每一次代码的修改、提交、推送之后, 交由代码托管方github[注]的自动工作流系统进行Docker[注]镜像的构建与发布。若构建失败笔者将会收到邮件通知, 从而分载(Offload)了部分本应人工完成的编译时(Compile-time)测试工作。
+UNIT3D作者提供了一份手动部署的手册, 以及一个自动部署脚本, 但与当前各依赖包的最新版本有所脱节。为此, 笔者使用了站长howardlau同学提供的Dockerfile, 在每一次代码的修改、提交、推送之后, 交由代码托管方github的自动工作流系统\footnote{https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/github-flow}进行Docker\footnote{https://hub.docker.com/}镜像的构建与发布。若构建失败笔者将会收到邮件通知, 从而分载(Offload)了部分本应人工完成的编译时(Compile-time)测试工作。
 
 [图 (4.1-github-workflow) GITHUB 工作流 流程图]
 
-除此之外, 笔者还使用了TravisCI[注]进行部分用例测试, StyleCI来检查代码格式规范。两者都是各自领域优秀的持续集成(Continuos Integration, CI)测试工具, 基本上承担了大部分代码级别的测试工作。具体的功能测试将在4.5中的试运营部分给出描述。
+除此之外, 笔者还使用了TravisCI\footnote{https://travis-ci.org/}进行部分用例测试, StyleCI\footnote{https://styleci.io/}来检查代码格式规范。两者都是各自领域优秀的持续集成(Continuos Integration, CI)测试工具, 基本上承担了大部分代码级别的测试工作。具体的功能测试将在\ref{sec:preop}中的试运营部分给出描述。
 
 [图 (4.1-style-ci, 4.1-travis-ci) TravisCI StyleCI]
 
-具体的本地测试环境是在VMWare虚拟机上, 通过PhpStorm的Deploy(部署)功能以及虚拟机的SSH(Secure shell, 安全外壳协议)服务, 能够将代码实时地从本地开发环境同步到虚拟机的测试环境中。然后在本地开发环境的浏览器中就能实时预览到开发中的网页。
+具体的本地测试环境是在VMware虚拟机上, 通过PhpStorm的Deploy(部署)功能以及虚拟机的SSH(Secure shell, 安全外壳协议)服务, 能够将代码实时地从本地开发环境同步到虚拟机的测试环境中。然后在本地开发环境的浏览器中就能实时预览到开发中的网页。
 
 [图 (4.1-vwmare-unit3d-dev, 4.1-web-idehelper-chrome-devtool) 虚拟机 和 调试阶段的页面 截图重点给到IDE HELPER 和网页下面的Dev Toolbar]
 
@@ -67,7 +67,7 @@ UNIT3D的数据库中定义有poll和voters两个数据表。乍一看很容易�
 
 UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选投票, 以及投票的重复IP检查功能都尚处于桩函数的状态, 相关的网页前端只留了一个`\#'的空锚点, 并无有效超链接路径。为此, 笔者对投票的删除、修改, 多选投票, 以及投票的重复IP检查进行了具体的实现。
 
-4.5.1 投票的删除、修改
+\subsection{投票的删除、修改}
 
 投票的增删改主要涉及到`/app/Http/Controllers/Staff/PollControler.php'这个控制器以及`/resources/views/Staff/poll/'下的相应视图模板。
 
@@ -83,7 +83,7 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
 
 删除的逻辑类似, 从前端取得待删除的投票ID后, 交由Laravel的模型模块, 自动注入相关类方法, 继而从数据表中实际删除对应的投票。
 
-4.5.2 投票的重复IP校验
+\subsection{投票的重复IP校验}
 
 重复IP校验的逻辑并不复杂, 只要将每次投票的HTTP请求中的源IP提取出来, 再与voter数据表中相应poll\_id外键对应的所有票的ip字段进行比对, 若发现一致的, 则判定为重复IP。
 
@@ -98,20 +98,20 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
 
 由于3.2.6中描述的理由, 需要为系统添加鉴权操作日志功能(下记"鉴权日志")。鉴权日志需要定义一个全新的数据模型, 并对应一张新的数据表, 因此需要进行一定的上层设计及数据库的迁移。
 
-4.6.1 数据模型的定义
+\subsection{数据模型的定义}
 
-因为主要记录的是鉴权操作, 而HTTP服务器软件, 比如nginx[注], 都有独自完善的日志功能, 所以本平台的鉴权日志只需记录用户相关的信息, 以及根据用户所用的设备等具有辨识性质信息哈希得到的一个识别码。为此, 定义Authentication类, 记录'user\_id', 'device\_id','ip\_address'三个字段, 分别对应PHP的integer, integer和string原生类型。为了记录鉴权的状态, 定义三种字符串常量, 'LOGIN', 'FAILED', 'LOCKOUT', 分别表示登录(即鉴权成功), 失败(表示当此鉴权操作失败, 如密码错误), 以及锁定(账户多次鉴权操作失败, 账户被上锁, 待解封) 之后的持久化步骤交给Laravel的持久化模块。
+因为主要记录的是鉴权操作, 而HTTP服务器软件, 比如nginx\footnote{https://www.nginx.com/}, 都有独自完善的日志功能, 所以本平台的鉴权日志只需记录用户相关的信息, 以及根据用户所用的设备等具有辨识性质信息哈希得到的一个识别码。为此, 定义Authentication类, 记录'user\_id', 'device\_id','ip\_address'三个字段, 分别对应PHP的integer, integer和string原生类型。为了记录鉴权的状态, 定义三种字符串常量, 'LOGIN', 'FAILED', 'LOCKOUT', 分别表示登录(即鉴权成功), 失败(表示当此鉴权操作失败, 如密码错误), 以及锁定(账户多次鉴权操作失败, 账户被上锁, 待解封) 之后的持久化步骤交给Laravel的持久化模块。
 
 [图 (4.6.1-authentication-model-png) models/authentication.php 可以用UML画E-R图]
 
 
-4.6.2 数据库迁移脚本
+\subsection{数据库迁移脚本}
 
 为了记录前述的数据模型, 要在数据库中定义新的数据表。这里用到前述的数据库迁移脚本。只需要将新字段的名称和SQL数据类型通过Blueprint类的相应子类类方法告知数据库即可。
 
 [图 (4.6.1-migration-script) \textbackslash database\textbackslash migrations\textbackslash 2020\_03\_03\_173122\_create\_authentications\_table.php]
 
-4.6.3 具体的日志记录逻辑
+\subsection{具体的日志记录逻辑}
 
 为了实现日志记录, 需要为每一次鉴权操作注册监听事件。为此需要在Laravel框架中的事件监听服务中注册鉴权操作的事件订阅者(AuthEventSubscriber), 流程图如下。
 
@@ -120,10 +120,11 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
 
 \section{网站的上线部署}
 
-网站的上线主要是站长17级软件工程专业的howardlau同学在负责。具体的上线方式是采用Docker部署, MySQL数据库和Redis缓存服务也使用既有的Docker镜像, 通过"docker-compose"[注]将其组合成容器, 方便今后交付到诸如Kubernete等的容器化云平台上投入生产使用。
+网站的上线主要是站长17级软件工程专业的howardlau同学在负责。具体的上线方式是采用Docker部署, MySQL数据库和Redis缓存服务也使用既有的Docker镜像, 通过"docker-compose"\footnote{https://docs.docker.com/compose}将其组合成容器, 方便今后交付到诸如Kubernete等的容器化云平台上投入生产使用。
 
 \section{试运行}
+\label{sec:preop}
 
-笔者及同好通过SYSU IPv6交流群[注]以及相关公众号推送[注]招募内测用户。用户群体主要是数据科学与计算机学院的学生, 他们对BT协议以及PT网站都有一定的了解, 有些还是北邮人BYRBT和六维空间的忠实用户。对于这样内测用户, 不用重新培养使用习惯, 能够较好地帮助运营方确定用户需求, 并得以迅速跟进开发实现。
+笔者及同好通过SYSU IPv6交流群\footnote{一个群员以中山大学数据科学与计算机学院学生为主的兴趣交流QQ群}以及相关公众号推送\footnote{微信公众号: SYSPT}招募内测用户。用户群体主要是数据科学与计算机学院的学生, 他们对BT协议以及PT网站都有一定的了解, 有些还是北邮人BYRBT和六维空间的忠实用户。对于这样内测用户, 不用重新培养使用习惯, 能够较好地帮助运营方确定用户需求, 并得以迅速跟进开发实现。
 
 而对另一部分通过推送慕名而来的BT新手, 笔者及同好还有数据科学与计算机学院的热心同学们热情地为他们提供了帮助。通过这样良好的内部交流, 循环促进培养新人的用户习惯, 整个网站的建设正在有条不紊地推进中。
