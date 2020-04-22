@@ -1030,6 +1030,7 @@
 % TODO: 重构宏包引入顺序以让代码语义聚集
 \RequirePackage[hidelinks, hyperfootnotes=true]{hyperref}
 \RequirePackage{footnotebackref}
+\RequirePackage{xurl}
 
 \renewcommand{\@fnsymbol}[1]{
     \ifcase#1\or \text{①}\or \text{②}\or \text{③}\or    \text{④}\or \text{⑤}\or \text{⑥}\or \text{⑦}\or \text{⑧} \or \text{⑨} \or \text{⑩}
