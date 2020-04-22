@@ -30,13 +30,13 @@ BT客户端和Tracker发起通信(以下记作announce), BT客户端将自己正
 
 \section{BT客户端软件}
 
-BT协议提出之初, 作者Bram Cohen就实现了一版BT客户端软件`BitTorrent'\footnote{https://www.bittorrent.com/downloads}, 随后他加入了商业公司`BitTorrent, Inc.'\footnote{https://www.bittorrent.com/}。所以BitTorrent既是协议的名称, 也是BT协议客户端软件的名称, 同时还是目前负责开发维护BT协议的商业公司的名称。
+BT协议提出之初, 作者Bram Cohen就实现了一版BT客户端软件`BitTorrent'\footnote{\url{https://www.bittorrent.com/downloads}, 随后他加入了商业公司`BitTorrent, Inc.'\footnote{https://www.bittorrent.com/}}。所以BitTorrent既是协议的名称, 也是BT协议客户端软件的名称, 同时还是目前负责开发维护BT协议的商业公司的名称。
 
-BT客户端就是直接面对用户的BT协议UI, 目前常见的BT客户端有uTorrent\footnote{https://www.utorrent.com/}, qBittorrent\footnote{https://www.qbittorrent.org/}等, 其中前者为BitTorrent, Inc.公司开发的商业共享软件, 可以免费下载使用; 后者是开源软件, 基于libtorrent-rasterbar这一开源BT协议的实现。
+BT客户端就是直接面对用户的BT协议UI, 目前常见的BT客户端有uTorrent\footnote{\url{https://www.utorrent.com/}}, qBittorrent\footnote{\url{https://www.qbittorrent.org/}}等, 其中前者为BitTorrent, Inc.公司开发的商业共享软件, 可以免费下载使用; 后者是开源软件, 基于libtorrent-rasterbar这一开源BT协议的实现。
 
 BT客户端的工作主要分为以下几步:
 
-\begin{enumerate}[label=\arabic*),leftmargin=*]
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
 \item 监听指定端口, 以接受 \ref{enum:connect} 中将要描述的来自对等方BT客户端的传入连接。
 
 \item 解析用户输入的Torrent文件, 取得种子特征值、Tracker服务器列表等关键信息。
@@ -61,16 +61,16 @@ BT客户端的工作主要分为以下几步:
 \section{Laravel MVC框架}
 \label{sec:Larvel}
 
-Laravel\footnote{https://laravel.com/}是美国开发者Taylor Otwell于2011年6月发布初版的用PHP编写的开源MVC框架。它的代码组织清晰, 并且使用了新生代PHP强大的扩展包(Composer)包管理机制, 使之成为一个非常现代化的Web应用开发框架。
+Laravel\footnote{\url{https://laravel.com/}}是美国开发者Taylor Otwell于2011年6月发布初版的用PHP编写的开源MVC框架。它的代码组织清晰, 并且使用了新生代PHP强大的扩展包(Composer)包管理机制, 使之成为一个非常现代化的Web应用开发框架。
 
-Laravel根据模块组织文件结构\footnote{https://laravel.com/docs/7.x/structure}。项目的/app/Models目录下存放着项目所定义的数据结构模型(Model); /app/Http/Controller目录下存放着大多数开发所需要的后端逻辑, 即控制器(Controller)部分; /resources/views下存放着项目要向用户展现的视图(View)模板。
+Laravel根据模块组织文件结构\footnote{\url{https://laravel.com/docs/7.x/structure}}。项目的/app/Models目录下存放着项目所定义的数据结构模型(Model); /app/Http/Controller目录下存放着大多数开发所需要的后端逻辑, 即控制器(Controller)部分; /resources/views下存放着项目要向用户展现的视图(View)模板。
 
 由于PHP的语法继承自C语言系列, 加上目录结构清晰、有完善的包管理机制, 使得接下来的开发非常高效。
 
 
 \section{UNIT3D-Community-Edition}
 
-UNIT3D-Community-Edition\footnote{https://github.com/HDInnovations/UNIT3D-Community-Edition}(以下简记作UNIT3D)是笔者选用的二次开发原型。他由美国开发者HDVinnie发起创建, 目前最新版本是v2.3.0。
+UNIT3D-Community-Edition\footnote{\url{https://github.com/HDInnovations/UNIT3D-Community-Edition}}(以下简记作UNIT3D)是笔者选用的二次开发原型。他由美国开发者HDVinnie发起创建, 目前最新版本是v2.3.0。
 
 UNIT3D的文件结构如\ref{sec:Larvel}中所述。其具有较好的UI, 同时作为种子发布平台的功能基本完善。但是, 由于作者是业余开发该项目, 加上测试人员并不多, 部分功能只是打桩而尚未实现, 而且有些使用习惯与国内用户并不相同。因此, 为了更好地将其投入使用, 笔者及同好们进行了大量的测试、调研, 并确定了二次开发的方向及计划。
 
@@ -105,7 +105,7 @@ UNIT3D的文件结构如\ref{sec:Larvel}中所述。其具有较好的UI, 同时
 
 % \subsection{矢量图像的插入}
 % \label{sec:vec_fig}
-% 这是几个使用pgfplots画的矢量图像\footnote{https://www.sharelatex.com/learn/Pgfplots\_package}，pgfplots包还能画出更加炫酷的图像。
+% 这是几个使用pgfplots画的矢量图像\footnote{\url{\url{https://www.sharelatex.com/learn/Pgfplots\_package}}}，pgfplots包还能画出更加炫酷的图像。
 % \input{figure/chap02_vec_fig}
 
 % 关于图，详细来说

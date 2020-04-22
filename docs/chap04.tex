@@ -10,11 +10,11 @@
 
 [图 (4.1-phpstorm-ide) PHPSTORM开发环境]
 
-UNIT3D作者提供了一份手动部署的手册, 以及一个自动部署脚本, 但与当前各依赖包的最新版本有所脱节。为此, 笔者使用了站长howardlau同学提供的Dockerfile, 在每一次代码的修改、提交、推送之后, 交由代码托管方github的自动工作流系统\footnote{https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/github-flow}进行Docker\footnote{https://hub.docker.com/}镜像的构建与发布。若构建失败笔者将会收到邮件通知, 从而分载(Offload)了部分本应人工完成的编译时(Compile-time)测试工作。
+UNIT3D作者提供了一份手动部署的手册, 以及一个自动部署脚本, 但与当前各依赖包的最新版本有所脱节。为此, 笔者使用了站长howardlau同学提供的Dockerfile, 在每一次代码的修改、提交、推送之后, 交由代码托管方github的自动工作流系统\footnote{\url{https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/github-flow}进行Docker\footnote{https://hub.docker.com/}}镜像的构建与发布。若构建失败笔者将会收到邮件通知, 从而分载(Offload)了部分本应人工完成的编译时(Compile-time)测试工作。
 
 [图 (4.1-github-workflow) GITHUB 工作流 流程图]
 
-除此之外, 笔者还使用了TravisCI\footnote{https://travis-ci.org/}进行部分用例测试, StyleCI\footnote{https://styleci.io/}来检查代码格式规范。两者都是各自领域优秀的持续集成(Continuos Integration, CI)测试工具, 基本上承担了大部分代码级别的测试工作。具体的功能测试将在\ref{sec:preop}中的试运营部分给出描述。
+除此之外, 笔者还使用了TravisCI\footnote{\url{https://travis-ci.org/}}进行部分用例测试, StyleCI\footnote{\url{https://styleci.io/}}来检查代码格式规范。两者都是各自领域优秀的持续集成(Continuos Integration, CI)测试工具, 基本上承担了大部分代码级别的测试工作。具体的功能测试将在\ref{sec:preop}中的试运营部分给出描述。
 
 [图 (4.1-style-ci, 4.1-travis-ci) TravisCI StyleCI]
 
@@ -100,7 +100,7 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
 
 \subsection{数据模型的定义}
 
-因为主要记录的是鉴权操作, 而HTTP服务器软件, 比如nginx\footnote{https://www.nginx.com/}, 都有独自完善的日志功能, 所以本平台的鉴权日志只需记录用户相关的信息, 以及根据用户所用的设备等具有辨识性质信息哈希得到的一个识别码。为此, 定义Authentication类, 记录'user\_id', 'device\_id','ip\_address'三个字段, 分别对应PHP的integer, integer和string原生类型。为了记录鉴权的状态, 定义三种字符串常量, 'LOGIN', 'FAILED', 'LOCKOUT', 分别表示登录(即鉴权成功), 失败(表示当此鉴权操作失败, 如密码错误), 以及锁定(账户多次鉴权操作失败, 账户被上锁, 待解封) 之后的持久化步骤交给Laravel的持久化模块。
+因为主要记录的是鉴权操作, 而HTTP服务器软件, 比如nginx\footnote{\url{https://www.nginx.com/}}, 都有独自完善的日志功能, 所以本平台的鉴权日志只需记录用户相关的信息, 以及根据用户所用的设备等具有辨识性质信息哈希得到的一个识别码。为此, 定义Authentication类, 记录'user\_id', 'device\_id','ip\_address'三个字段, 分别对应PHP的integer, integer和string原生类型。为了记录鉴权的状态, 定义三种字符串常量, 'LOGIN', 'FAILED', 'LOCKOUT', 分别表示登录(即鉴权成功), 失败(表示当此鉴权操作失败, 如密码错误), 以及锁定(账户多次鉴权操作失败, 账户被上锁, 待解封) 之后的持久化步骤交给Laravel的持久化模块。
 
 [图 (4.6.1-authentication-model-png) models/authentication.php 可以用UML画E-R图]
 
@@ -120,7 +120,7 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
 
 \section{网站的上线部署}
 
-网站的上线主要是站长17级软件工程专业的howardlau同学在负责。具体的上线方式是采用Docker部署, MySQL数据库和Redis缓存服务也使用既有的Docker镜像, 通过"docker-compose"\footnote{https://docs.docker.com/compose}将其组合成容器, 方便今后交付到诸如Kubernete等的容器化云平台上投入生产使用。
+网站的上线主要是站长17级软件工程专业的howardlau同学在负责。具体的上线方式是采用Docker部署, MySQL数据库和Redis缓存服务也使用既有的Docker镜像, 通过"docker-compose"\footnote{\url{https://docs.docker.com/compose}}将其组合成容器, 方便今后交付到诸如Kubernete等的容器化云平台上投入生产使用。
 
 \section{试运行}
 \label{sec:preop}
