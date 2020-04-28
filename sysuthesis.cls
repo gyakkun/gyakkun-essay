@@ -673,11 +673,11 @@
         \textbf{Student Name} & \@eauthor & {Major} & \@emajor \\
         \hline
         % 第二行 论文题目 如果题目长度过长需要换成两行的版本。
-        \textbf{论文(设计)题目} & \multicolumn{3}{c|}{\@ctitle} \\
-        \textbf{Thesis（Design）Title} & \multicolumn{3}{c|}{\@etitle} \\
+        \textbf{论文(设计)题目} & \multicolumn{3}{|c|}{\@ctitle} \\
+        % \textbf{Thesis（Design）Title} & \multicolumn{3}{c|}{\@etitle} \\
         % 需要两行英文题目的可以使用向下面两行
-        % \textbf{Thesis（Design）Title} & \multicolumn{3}{|c|}{\@etitlefirst} \\
-        % & \multicolumn{3}{|c|}{\@etitlesecond}\\
+        \textbf{Thesis（Design）Title} & \multicolumn{3}{|c|}{\@etitlefirst} \\
+        & \multicolumn{3}{|c|}{\@etitlesecond}\\
         \hline
         \textbf{答辩小组成员} & \multicolumn{3}{c|}{\quad} \\
         \textbf{Committee Members} & \multicolumn{3}{c|}{\quad} \\
@@ -706,7 +706,7 @@
             % \vspace{14cm}
 
             % 单行标题的情况，用14也行，推荐15
-            \vspace{15cm}
+            \vspace{14cm}
             \hspace{2\ccwd}记录人签名（Clerk Signature）:\hfill 日期（Date）:\makebox{\hspace{5\ccwd}}
             \vspace{\baselineskip}
         }
