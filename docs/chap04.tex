@@ -24,7 +24,7 @@ UNIT3D作者提供了一份手动部署的手册, 以及一个自动部署脚本
     \label{fig:githubworkflow}
 \end{figure}
 
-[图 (4.1-github-workflow) GITHUB 工作流 流程图]
+% [图 (4.1-github-workflow) GITHUB 工作流 流程图]
 
 除此之外, 笔者还使用了TravisCI\footnote{\url{https://travis-ci.org/}}进行部分用例测试, StyleCI\footnote{\url{https://styleci.io/}}来检查代码格式规范。两者都是各自领域优秀的持续集成(Continuos Integration, CI)测试工具, 基本上承担了大部分代码级别的测试工作, 效果见图 \ref{fig:ci}。具体的功能测试将在\ref{sec:preop}中的试运营部分给出描述。
 
@@ -52,7 +52,7 @@ UNIT3D作者提供了一份手动部署的手册, 以及一个自动部署脚本
 	\label{fig:ci}
 \end{figure}
 
-[图 (4.1-style-ci, 4.1-travis-ci) TravisCI StyleCI]
+% [图 (4.1-style-ci, 4.1-travis-ci) TravisCI StyleCI]
 
 具体的本地测试环境是在VMware虚拟机上, 通过PhpStorm的Deploy(部署)功能以及虚拟机的SSH(Secure shell, 安全外壳协议)服务, 能够将代码实时地从本地开发环境同步到虚拟机的测试环境中。然后在本地开发环境的浏览器中就能实时预览到开发中的网页, 见图 \ref{fig:devenv}。
 
@@ -76,7 +76,7 @@ UNIT3D作者提供了一份手动部署的手册, 以及一个自动部署脚本
 	\label{fig:devenv}
 \end{figure}
 
-[图 (4.1-vwmare-unit3d-dev, 4.1-web-idehelper-chrome-devtool) 虚拟机 和 调试阶段的页面 截图重点给到IDE HELPER 和网页下面的Dev Toolbar]
+% [图 (4.1-vwmare-unit3d-dev, 4.1-web-idehelper-chrome-devtool) 虚拟机 和 调试阶段的页面 截图重点给到IDE HELPER 和网页下面的Dev Toolbar]
 
 \section{本地化工作}
 
@@ -89,7 +89,7 @@ Laravel框架具有较好的国际化兼容性, 通过在资源文件中定义�
     \label{fig:localdiff}
 \end{figure}
 
-[图 (4.2-git-diff) 一份git diff式的源码前后对比, 突出从原始英语单词到`@lang('app.langItem')'的部分]
+% [图 (4.2-git-diff) 一份git diff式的源码前后对比, 突出从原始英语单词到`@lang('app.langItem')'的部分]
 
 针对英语转中文的翻译部分, 由于笔者曾经修过实用口译这门课程, 对快速高效的翻译颇有心得。经过一番重新翻译、修改、润色, 最终得到了令人满意的中文用户界面。
 
@@ -113,7 +113,7 @@ Laravel框架具有较好的国际化兼容性, 通过在资源文件中定义�
     \label{fig:guidifflocal}
 \end{figure}
 
-[图 (4.2-before-localization-cut, 4.2-after-localization-cut) 对比前后用户界面的语言部分]
+% [图 (4.2-before-localization-cut, 4.2-after-localization-cut) 对比前后用户界面的语言部分]
 
 
 \section{数据表迁移工作}
@@ -130,7 +130,7 @@ Laravel框架具有较好的国际化兼容性, 通过在资源文件中定义�
     \label{fig:subheadmigratescript}
 \end{figure}
 
-[图 (4.3-subhead-migration-script) 新表中新增subhead的脚本, 截图/database/migrations/2020\_02\_10\_122859\_add\_subhead\_to\_torrents\_table.php]
+% [图 (4.3-subhead-migration-script) 新表中新增subhead的脚本, 截图/database/migrations/2020\_02\_10\_122859\_add\_subhead\_to\_torrents\_table.php]
 
 在这里, Blueprint类会将相应的Migration类方法, 比如`\$table->string('subhead')', 转化为SQL语句`alter table \$table add subhead', 从而达到增加字段的目的。
 
@@ -145,7 +145,7 @@ Laravel框架具有较好的国际化兼容性, 通过在资源文件中定义�
     \label{fig:mapnexusphpunit3d}
 \end{figure}
 
-[图 (4.3-tjupt-to-unit3d-script-mapping) 旧表 vs 新表, 截取PHPSTORM中TJUPT\_TO\_UNIT3D中的Mapping.php]
+% [图 (4.3-tjupt-to-unit3d-script-mapping) 旧表 vs 新表, 截取PHPSTORM中TJUPT\_TO\_UNIT3D中的Mapping.php]
 
 
 \section{功能删改 - 标签功能调整}
@@ -208,7 +208,7 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
     \label{fig:validatevoterchart}
 \end{figure}
 
-[图 (4.5.2-validate-voter-flowchart) 判定重复IP流程图 app\textbackslash Http\textbackslash Controllers\textbackslash PollController.php  validateVoter()函数]
+% [图 (4.5.2-validate-voter-flowchart) 判定重复IP流程图 app\textbackslash Http\textbackslash Controllers\textbackslash PollController.php  validateVoter()函数]
 
 具体的实现中, 使用了或非运算符简化运算, 但语义不太明晰。
 
@@ -219,7 +219,7 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
     \label{fig:validatevotercode}
 \end{figure}
 
-[图  (4.5.2-validate-voter-code) 直接糊代码 app\textbackslash Http\textbackslash Controllers\textbackslash PollController.php  validateVoter()函数]
+% [图  (4.5.2-validate-voter-code) 直接糊代码 app\textbackslash Http\textbackslash Controllers\textbackslash PollController.php  validateVoter()函数]
 
 
 \section{功能增添 - 初步添加鉴权操作日志记录功能}
@@ -237,7 +237,7 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
     \label{fig:userauthmodeler}
 \end{figure}
 
-[图 (4.6.1-authentication-model-png) models/authentication.php 可以用UML画E-R图]
+% [图 (4.6.1-authentication-model-png) models/authentication.php 可以用UML画E-R图]
 
 
 \subsection{数据库迁移脚本}
@@ -251,13 +251,13 @@ UNIT3D原版实现了增加单项投票的功能。然而, 删/改投票, 多选
     \label{fig:authmigratescript}
 \end{figure}
 
-[图 (4.6.1-migration-script) \textbackslash database\textbackslash migrations\textbackslash 2020\_03\_03\_173122\_create\_authentications\_table.php]
+% [图 (4.6.1-migration-script) \textbackslash database\textbackslash migrations\textbackslash 2020\_03\_03\_173122\_create\_authentications\_table.php]
 
 \subsection{具体的日志记录逻辑}
 
 为了实现日志记录, 需要为每一次鉴权操作注册监听事件。为此需要在Laravel框架中的事件监听服务中注册鉴权操作的事件订阅者(AuthEventSubscriber), 流程图如下。
 
-[图 (4.6.3-event-model) 摘要Laravel的事件监听机制]
+% [图 (4.6.3-event-model) 摘要Laravel的事件监听机制]
 
 
 \section{网站的上线部署}
