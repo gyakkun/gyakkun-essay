@@ -827,7 +827,7 @@
 }
 \newcommand\makelistoffiguretable{
     \listoffigures
-    \listoftables
+    % \listoftables
     \thispagestyle{listoffiguretable}
     \newclearpage
 }
