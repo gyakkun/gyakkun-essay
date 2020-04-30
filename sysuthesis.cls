@@ -545,7 +545,7 @@
             \textbf{(Overall Assessment)}
         }&
         \multicolumn{1}{m{\textwidth/3*2}|}{
-            指导教师意见Comments from Supervisor:\newline
+            指导教师意见Comments from Supervisor:
             \@finalcomment
             \vspace{\baselineskip}
             1、按计划完成，完成情况优（Excellent）：（\quad）\newline
@@ -575,7 +575,7 @@
             \@firstsummary
             \begin{adjustwidth}{2em}{2em}
             指导教师意见 \newline
-            Comments of Supervisor: \newline
+            Comments of Supervisor:
             \end{adjustwidth}
             \@firstcomment
             \vspace{\baselineskip}
@@ -590,7 +590,7 @@
             \@secondsummary
             \begin{adjustwidth}{2em}{2em}
             指导教师意见 \newline
-            Comments of Supervisor: \newline
+            Comments of Supervisor:
             \end{adjustwidth}
             \@secondcomment
             \vspace{\baselineskip}
@@ -630,7 +630,8 @@
 
         % 结尾落款部分
         \multicolumn{2}{|p{\textwidth}|}{
-            \vspace{1cm} \newline
+            % \vspace{1cm} \newline
+            \newline
             \hspace{2\ccwd}学生签名（Student Signature）:\hfill 日期（Date）:\makebox{\hspace{5\ccwd}} \newline
             \rule{0cm}{\baselineskip}\newline
             \hspace{2\ccwd}指导教师签名（Supervisor Signature）:\hfill 日期（Date）:\makebox{\hspace{5\ccwd}} \newline
