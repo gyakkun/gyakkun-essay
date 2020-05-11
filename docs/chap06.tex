@@ -18,7 +18,7 @@
 
 在随后的功能完善实现中, 笔者剔除了不必要的标签系统功能, 完善实现了投票功能, 初步实现了鉴权操作日志记录功能。这些功能的调整为之后的上线内测运营打下了基础。
 
-在一群行动力极强的同好的共同帮助下, 网站得以迅速上线运行。从初版基于天津大学北洋园TJUPT程序二次开发而来的网站于2019年12月17日上线, 到2020年2月26日网站转向使用UNIT3D-Community-Edition作为服务程序, 再到截至本文完成时刻\footnote{2020年4月22日}为止, 共发展了393位\footnote{根据用户ID}用户, 有850个资源。随着新学期的开始, 相信在强有力的校内推广下, 会逐渐发展出成熟、稳定的用户群。
+在一群行动力极强的同好的共同帮助下, 网站得以迅速上线运行。从初版基于天津大学北洋园TJUPT程序二次开发而来的网站于2019年12月17日上线, 到2020年2月26日网站转向使用UNIT3D-Community-Edition作为服务程序, 再到截至本文完成时刻\footnote{2020年4月22日}为止, 根据数据库中的ID, 共发展了393位用户, 有850个资源。随着新学期的开始, 相信在强有力的校内推广下, 会逐渐发展出成熟、稳定的用户群。
 
 笔者作为开发者参与了整个网站建设的全过程, 从初期站长突如其来地上线, 到站务、开发团队的招募与组建, 随后的开会讨论网站的技术转型, 再到NexusPHP转UNIT3D等的一系列工作, 无不饱含着每一位同好倾注的心血。
 
@@ -29,11 +29,11 @@
 \begin{enumerate}[label=(\arabic*),leftmargin=*]
 \item UI美观。较其他大学流行的基于NexusPHP的PT网站有更加清晰的逻辑入口, 还包括响应式的自适应UI, 为手机用户浏览本站提供了一定的兼容性。
 
-\item 稳定可靠。基于PHP语言的Laravel框架受益于其以来的PHP-FPM\footnote{\url{https://php-fpm.org/}}运行时的所有优良特性, 包括进程式的请求响应管理, 将系统出错造成的损失局限在单独的进程之内, 相比如Node.js等因使用单线程处理事件循环\footnote{\url{https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/}}(Event Loop)而需要更高成本的故障转移(Failover)的计算资源管理方式, 更不容易因为单点故障而导致网站可用性的下降(Degrade)。
+\item 稳定可靠。基于PHP语言的Laravel框架受益于其以来的PHP-FPM\footnote{PHP-FPM: 一个PHP语言运行时引擎的发行版, \url{https://php-fpm.org/}}运行时的所有优良特性, 包括进程式的请求响应管理, 将系统出错造成的损失局限在单独的进程之内, 相比如Node.js等因使用单线程处理事件循环\footnote{Node.js Event Loop介绍页: \url{https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/}}(Event Loop)而需要更高成本的故障转移(Failover)的计算资源管理方式, 更不容易因为单点故障而导致网站可用性的下降(Degrade)。
 
 \item 易于开发。Laravel框架的设计模式, 包括服务提供者(ServiceProvider), 事件机制, 以及完善自解释的MVC模型, 都为开发者提供了友好的开发体验。这为能够快速实现需求提供了难易度上的保证。
 
-\item 已进入实际运营。与部分只停留在纸面上的论文不同, 作为工程类的论文, 本文的工作成果已经投入了实际的运营中\footnote{网站链接: \url{https://21weeks.icu/}}。随着用户群的稳步扩张, 加上即将开学\footnote{本文写于2020年4月19日}带来的新的一轮推广及用户招募, 本文的工作将会在更广阔的范围内显示其价值。
+\item 已进入实际运营。与部分只停留在纸面上的论文不同, 作为工程类的论文, 本文的工作成果已经投入了实际的运营中\footnote{网站链接: \url{https://21weeks.icu/}}。随着用户群的稳步扩张, 加上即将开学\footnote{本文写于2020年4月}带来的新的一轮推广及用户招募, 本文的工作将会在更广阔的范围内显示其价值。
 
 \item 持续完善中。本文所描述的资源分享平台在将来也会进行更多功能上的改进, 而非止步于本文列举的工作。在毕业后, 相信除了笔者以外, 会有更多志同道合的伙伴会加入到本项目的开发、运营、维护中来, 本文的工作也因此能得以持续完善。
 \end{enumerate}
@@ -43,7 +43,7 @@
 \begin{enumerate}[label=(\arabic*),leftmargin=*]
 \item NexusPHP的部分功能, 如页面小游戏功能和竞猜功能, 没能在这轮开发中得以迁移。因此新旧两版网站的用户体验并非无缝过渡。
 
-\item 本文所做的工作之一的鉴权日志, 目前尚未实现前端的查询, 需要使用SQL终端或是SQL的管理用工具(如 MySQL Workbench\footnote{\url{https://www.mysql.com/products/workbench}}), 以及配合HTTP服务器本身的日志记录功能, 方可实现对鉴权日志的筛查。
+\item 本文所做的工作之一的鉴权日志, 目前尚未实现前端的查询, 需要使用SQL终端或是SQL的管理用工具(如 MySQL Workbench\footnote{MySQL Workbench官方网站: \url{https://www.mysql.com/products/workbench}}), 以及配合HTTP服务器本身的日志记录功能, 方可实现对鉴权日志的筛查。
 \end{enumerate}
 
 包括以上优缺点在内的特点既是本文笔者自豪的地方, 也是遗憾所在。
